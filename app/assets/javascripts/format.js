@@ -1,3 +1,7 @@
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 function formatRepo (repo) {
 	window.meme = repo
 
@@ -10,8 +14,8 @@ function formatRepo (repo) {
 
 
 				markup += "<div class='select2-result-repository__statistics'>" +
-					"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.gender + " Forks</div>" +
-						"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> "  + " Stars</div>" +
+					"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.gender.capitalizeFirstLetter() + " </div>" +
+						"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.rating + " Stars</div>" +
 							"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> "  + " Watchers</div>" +
 								"</div>" +
 									"</div></div>";
@@ -20,6 +24,24 @@ function formatRepo (repo) {
 }
 
 function formatRepoSelection (repo) {
+	window.testo = repo;
 	return repo.firstname + " " + repo.lastname;
+}
+
+function popInfo(data) {
+	$(".bs-img-holder").html("<img src='" + data.image_url + "'>'");
+	$("#bs-name").html(data.firstname + " " + data.lastname);
+	$("#bs-gender").html(data.gender.capitalizeFirstLetter());
+	$("#bs-title").html(data.title);
+	$("#bs-bio").html(data.bio);
+	$("#bs-language").html(data.language);
+	$("#bs-specialties").html(data.specialties);
+	$("#bs-rating").html("");
+	for(var i=0;i<data.rating;i++ ) {
+		$("#bs-rating").append(" " + "<i class='fa fa-star'></i>");
+	}
+	$("#single-rs-holder").show();
+	$(".select2-selection__choice").html(data.firstname + " " + data.lastname);
+	$(".bs-result").addClass("bor");
 }
 

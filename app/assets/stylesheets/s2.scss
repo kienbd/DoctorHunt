@@ -24,6 +24,26 @@
 	line-height: 34px;
 }
 
+.bs-result {
+	margin-top: 10px;
+	#bs-name {
+		color: #333;
+	}
+	.bs-attrs {
+		border-top: 1px solid #aeaeae;
+		padding-top: 10px;
+	}
+}
+.bs-img-holder {
+	text-align: center;
+	img {
+		width: 100%;
+	}
+}
+.bs-info-holder h5 div {
+	margin-bottom: 10px;
+}
+
 
 .img-bg {
 	background-image: url(background-photo.jpg);
@@ -35,13 +55,34 @@
 	height: 300px;
 	position: relative;
 	.content {
-		padding-top: 100px;
-		width: 50%;
-		margin: 0 auto;
+		padding-top: 10px;
 		input {
 			width: 100%;
 		}
 	}
+}
+
+#single-rs-holder {
+	display: none;
+}
+
+.bor {
+	padding: 10px;
+	border: 1px solid;
+	border-radius: 10px;
+}
+
+.slogan {
+	color: white;
+	margin-top:0px;
+	display: inline-block;
+	padding: 80px 50px 4px;
+	box-shadow: 0px 1px #aeaeae;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+	max-height: 300px;
+
 }
 
 @media only screen and (max-width: 767px) {
@@ -50,4 +91,21 @@
      * to improve page load speed on mobile internet connections */
     background-image: url(background-photo-mobile-devices.jpg);
   }
+	.select2-search__field {
+		font-size: 16px;
+	}
+	.select2-selection__rendered li {
+		font-size: 16px;
+	}
+	.slogan {
+		font-size: 28px;
+		padding: 80px 30px 4px;
+	}
+}
+
+@media only screen and (max-width: 578px) {
+	.slogan {
+		font-size: 20px;
+		padding: 80px 10px 4px;
+	}
 }

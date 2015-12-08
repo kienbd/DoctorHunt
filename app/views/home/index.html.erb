@@ -1,12 +1,49 @@
 <div class="img-bg">
-	<section class="content">
+	<div class="text-center" style="padding: 0px 10px;">
+		<h1 class="text-center slogan"> Finding a doctos has never been easier </h1>
+	</div>
+	<section class="content col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 		<p>
 			<select class="js-example-data-ajax js-states form-control" style="width: 100%"></select>
 		</p>
 	</section>
 </div>
-<div class="container result">
-	<div id="single-rs-holder"></div>
+<div class="container bs-result">
+	<div id="single-rs-holder">
+		<h3 class="text-center" id="bs-name"></h3>
+		<div class="col-sm-12 col-md-6 col-md-offset-3 bs-attrs">
+			<div>
+				<div class="col-xs-6 col-sm-4 col-sm-offset-2 col-md-5 col-md-offset-1 bs-img-holder">
+
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 bs-info-holder">
+					<h5>
+						<div>
+							<div class="col-xs-6 col-sm-6"><span> Title </span></div>
+							<div class="col-xs-6 col-sm-6"><b id="bs-title"></b></div>
+						</div>
+						<div>
+							<div class="col-xs-6 col-sm-6"><span> Gender </span></div>
+							<div class="col-xs-6 col-sm-6"><b id="bs-gender"></b></div>
+						</div>
+						<div>
+							<div class="col-xs-6 col-sm-6"><span> Specialties </span></div>
+							<div class="col-xs-6 col-sm-6"><b id="bs-specialties"></b></div>
+						</div>
+						<div>
+							<div class="col-xs-6 col-sm-6"><span> Rating </span></div>
+							<div class="col-xs-12 col-sm-6"><b id="bs-rating"></b></div>
+						</div>
+					</h5>
+				</div>
+				<div class="clear clearfix"></div>
+			</div>
+			<div>
+				<div class="col-sm-12"><b> Bio </b></div>
+				<div class="col-sm-12"><p id="bs-bio"></p></div>
+			</div>
+		</div>
+	</div>
 	<div id="multiple-rs-holder"></div>
 </div>
 
@@ -14,8 +51,8 @@
 	$ajax = $(".js-example-data-ajax");
 	var obj = $ajax.select2({
 		placeholder: "Search a name",
-		highlight: true,
 		multiple: true,
+		allowClear: true,
 		ajax: {
 			url: "<%= root_path %>",
 			dataType: 'json',
@@ -29,8 +66,6 @@
 			},
 			processResults: function (data, params) {
 				params.page = params.page || 1;
-				obj.cache = obj.cache || [];
-				obj.cache[params.term] = data;
 
 				return {
 					results: data.doctors,
@@ -46,9 +81,15 @@
 		templateResult: formatRepo,
 		templateSelection: formatRepoSelection
 	});
+
 	$ajax.on("select2:selecting", function(e) {
-		window.test = e;
+		var data = e.params.args.data;
+		popInfo(data)
 		console.log(e);
 	});
+	$ajax.on("change",function(e) {
+		window.test = e;
+		console.log(e)
+	})
 </script>
 
