@@ -29,4 +29,16 @@
        url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
+body {
+	color: #6f6f6f;
+	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
 
+.org-st {
+	color: $purple;
+}
+
+a {
+	color: $fade_purple;
+}

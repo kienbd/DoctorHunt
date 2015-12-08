@@ -1,1 +1,53 @@
 @import "_sass/*";
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: white;
+  border: 0px;
+}
+
+.select2-selection__choice__remove {
+  display: none !important;
+}
+
+.select2-container--focus .select2-autocomplete .select2-selection__choice {
+  display: none;
+}
+
+
+.select2-search__field {
+	height: 34px;
+	line-height: 34px;
+	font-size: 20px;
+}
+.select2-selection__rendered li {
+	font-size: 20px;
+	line-height: 34px;
+}
+
+
+.img-bg {
+	background-image: url(background-photo.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #464646;
+	height: 300px;
+	position: relative;
+	.content {
+		padding-top: 100px;
+		width: 50%;
+		margin: 0 auto;
+		input {
+			width: 100%;
+		}
+	}
+}
+
+@media only screen and (max-width: 767px) {
+  .img-bg {
+    /* The file size of this background image is 93% smaller
+     * to improve page load speed on mobile internet connections */
+    background-image: url(background-photo-mobile-devices.jpg);
+  }
+}

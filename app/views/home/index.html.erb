@@ -1,16 +1,26 @@
-<p>
-	<select class="js-example-data-ajax js-states form-control"></select>
-</p>
+<div class="img-bg">
+	<section class="content">
+		<p>
+			<select class="js-example-data-ajax js-states form-control" style="width: 100%"></select>
+		</p>
+	</section>
+</div>
+<div class="container result">
+	<div id="single-rs-holder"></div>
+	<div id="multiple-rs-holder"></div>
+</div>
 
 <script>
 	$ajax = $(".js-example-data-ajax");
-	$ajax.select2({
+	var obj = $ajax.select2({
 		placeholder: "Search a name",
-		allowClear: true,
+		highlight: true,
+		multiple: true,
 		ajax: {
 			url: "<%= root_path %>",
 			dataType: 'json',
-			delay: 250,
+			cache: true,
+			delay: 300,
 			data: function (params) {
 				return {
 					query: params.term, // search term
@@ -19,55 +29,26 @@
 			},
 			processResults: function (data, params) {
 				params.page = params.page || 1;
-				window.test = data
-				window.toto = params
+				obj.cache = obj.cache || [];
+				obj.cache[params.term] = data;
 
 				return {
 					results: data.doctors,
 					pagination: {
-						more: true
+						more:  10 <= data.doctors.length
 					}
 				};
 			},
-			cache: true
 		},
 		escapeMarkup: function (markup) { return markup; },
 		minimumInputLength: 2,
+		maximumSelectionLength: 1,
 		templateResult: formatRepo,
 		templateSelection: formatRepoSelection
-	}).on('select2:select', function (e) {
-		$(this).val([]).trigger('change');
-		$(this).val([e.params.data.id]).trigger("change");
 	});
-
-	function formatRepo (repo) {
-		window.meme = repo
-
-		if(repo.loading) return "Searching .. ";
-
-		var markup = "<div class='select2-result-repository clearfix'>" +
-			"<div class='select2-result-repository__avatar'><img src='" + repo.image_url + "' /></div>" +
-			"<div class='select2-result-repository__meta'>" +
-				"<div class='select2-result-repository__title'>" + repo.firstname + " " + repo.lastname +  "</div>";
-
-				/*
-				if (repo.description) {
-					markup += "<div class='select2-result-repository__description'>" + repo.description + "</div>";
-				}
-				*/
-
-				markup += "<div class='select2-result-repository__statistics'>" +
-					"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.gender + " Forks</div>" +
-					"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> "  + " Stars</div>" +
-					"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> "  + " Watchers</div>" +
-					"</div>" +
-				"</div></div>";
-
-		return markup;
-	}
-
-	function formatRepoSelection (repo) {
-		return repo.firstname + " " + repo.lastname;
-	}
-
+	$ajax.on("select2:selecting", function(e) {
+		window.test = e;
+		console.log(e);
+	});
 </script>
+
