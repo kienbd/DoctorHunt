@@ -44,3 +44,25 @@ body {
 a {
 	color: $fade_purple;
 }
+
+.content-container {
+	position: relative;
+}
+
+.scroll-top {
+  opacity: 0.5;
+  position: fixed;
+	display:none;
+  right: 10px;
+  bottom: 10px;
+  &:hover {
+    opacity: 1;
+  }
+  span {
+    padding: 10px 20px;
+    font-size: 30px;
+    background: $fade_purple;
+    border-radius: 10px;
+    color: white;
+  }
+}

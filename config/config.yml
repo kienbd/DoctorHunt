@@ -1,7 +1,7 @@
 development: &default
   betterdoctor:
     uri: "https://api.betterdoctor.com/2015-09-22/"
-    user_key: 'd4da9600a63f1e5117884fc2ca5aa745'
+    user_key: 'USER-KEY'
     per_page: 10
 
 production:

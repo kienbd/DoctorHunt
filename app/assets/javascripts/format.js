@@ -2,6 +2,7 @@ String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
+/* format data on search result */
 function formatRepo (repo) {
 	window.meme = repo
 
@@ -28,6 +29,8 @@ function formatRepoSelection (repo) {
 	return repo.firstname + " " + repo.lastname;
 }
 
+
+/* print data to single show */
 function popInfo(data) {
 	$(".bs-img-holder").html("<img src='" + data.image_url + "'>'");
 	$("#bs-name").html(data.firstname + " " + data.lastname);
