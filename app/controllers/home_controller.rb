@@ -20,10 +20,11 @@ class HomeController < ApplicationController
 						title: d["profile"]["title"],
 						language: d["profile"]["languages"].map{|m| m["name"]}.join(","),
 						rating: (d["ratings"].first["rating"] rescue ""),
-						specialties: d["specialties"].map{|m| m["actor"]}.join(","),
+						specialties: d["specialties"].map{|m| m["actor"]},
 						bio: d["profile"]["bio"]
 					}
-				end
+				end rescue []
+				expires_in 3.minutes, :public => true
 				render :json => {doctors: @doctors},:status => resp.status_code
 			}
 		end

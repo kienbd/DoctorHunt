@@ -23,14 +23,13 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem "thin"
 
 #font awesome
 gem "font-awesome-rails"
 
-
 #restquest
 gem 'resthttp',:git => "https://github.com/kienbd/resthttp.git"
-
 
 #select2
 gem "select2-rails",:git => "https://github.com/rolme/select2-rails.git"

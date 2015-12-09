@@ -14,7 +14,7 @@ function formatRepo (repo) {
 
 
 				markup += "<div class='select2-result-repository__statistics'>" +
-					"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.gender.capitalizeFirstLetter() + " </div>" +
+					"<div class='select2-result-repository__forks'><i class='fa fa-user'></i> " + repo.gender.capitalizeFirstLetter() + " </div>" +
 						"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.rating + " Stars</div>" +
 							"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> "  + " Watchers</div>" +
 								"</div>" +
@@ -35,7 +35,11 @@ function popInfo(data) {
 	$("#bs-title").html(data.title);
 	$("#bs-bio").html(data.bio);
 	$("#bs-language").html(data.language);
-	$("#bs-specialties").html(data.specialties);
+	var specialties = "";
+	data.specialties.forEach(function(e) {
+		specialties += "<li><b>" + e + "</b></li>";
+	})
+	$("#bs-specialties").html(specialties);
 	$("#bs-rating").html("");
 	for(var i=0;i<data.rating;i++ ) {
 		$("#bs-rating").append(" " + "<i class='fa fa-star'></i>");
