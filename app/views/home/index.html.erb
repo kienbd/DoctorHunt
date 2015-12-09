@@ -49,6 +49,8 @@
 
 <script>
 	$(document).ready(function() {
+
+		/* init selct2 */
 		$ajax = $(".js-example-data-ajax");
 		var obj = $ajax.select2({
 			placeholder: "Search a name",
@@ -83,15 +85,17 @@
 			templateSelection: formatRepoSelection
 		});
 
+		/* print data to single show */
 		$ajax.on("select2:selecting", function(e) {
 			var data = e.params.args.data;
-			$("html, body").animate({ scrollTop: "130px" },600);
+			$("html, body").animate({ scrollTop: "130px" },500);
 			popInfo(data)
-			console.log(e);
 		});
+
+		/*  fix select2 error on change selection choice */
 		$ajax.on("change",function(e) {
-			window.test = e;
-			console.log(e)
+			var name = $("#bs-name").html();
+			$(".select2-selection__choice").html(name);
 		})
 	})
 </script>

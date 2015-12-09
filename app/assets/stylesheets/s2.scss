@@ -36,6 +36,9 @@
 }
 .bs-img-holder {
 	text-align: center;
+	max-height: 270px;
+	overflow-y: hidden;
+	overflow-x: hidden;
 	img {
 		width: 100%;
 	}

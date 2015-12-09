@@ -3,13 +3,12 @@ class HomeController < ApplicationController
 	def index
 		respond_to do |format|
 			format.html
-			format.js {
-			}
 			format.json{
 				per_page = APP_CONFIG["betterdoctor"]["per_page"]
 				query = params[:query]
 				page = params[:page] || 1
 				resp  = ApiHelpers::getDoctors(query,page.to_i) rescue {}
+				# format data
 				@doctors = resp["data"].map.with_index do |d,index|
 					{
 						id: per_page * (page.to_i - 1) + index + 1,
@@ -24,6 +23,7 @@ class HomeController < ApplicationController
 						bio: d["profile"]["bio"]
 					}
 				end rescue []
+				# cache 3 min
 				expires_in 3.minutes, :public => true
 				render :json => {doctors: @doctors},:status => resp.status_code
 			}
