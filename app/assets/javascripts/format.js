@@ -17,7 +17,7 @@ function formatRepo (repo) {
 				markup += "<div class='select2-result-repository__statistics'>" +
 					"<div class='select2-result-repository__forks'><i class='fa fa-user'></i> " + repo.gender.capitalizeFirstLetter() + " </div>" +
 						"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.rating + " Stars</div>" +
-							"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> "  + " Watchers</div>" +
+							"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> "  + repo.title +  "</div>" +
 								"</div>" +
 									"</div></div>";
 

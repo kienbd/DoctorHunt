@@ -49,7 +49,8 @@
 
 
 .img-bg {
-	background-image: url(background-photo.jpg);
+	/*background-image: url(background-photo.jpg);*/
+	background-image: url(http://i.imgsafe.org/9866542.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -102,9 +103,8 @@
 
 @media only screen and (max-width: 767px) {
   .img-bg {
-    /* The file size of this background image is 93% smaller
-     * to improve page load speed on mobile internet connections */
-    background-image: url(background-photo-mobile-devices.jpg);
+    /*background-image: url(background-photo-mobile-devices.jpg);*/
+    background-image: url(http://i.imgsafe.org/d1894d6.jpg);
   }
 	.select2-search__field {
 		font-size: 16px;
