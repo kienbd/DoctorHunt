@@ -92,6 +92,12 @@
 			popInfo(data)
 		});
 
+		$ajax.on('select2:opening', function(e) {
+			if ($ajax.select2('val') != null && $ajax.select2('val').length > 0) {
+				$(".select2-results__option:contains('You can only select 1 item')").html("Search a name");
+			}
+		});
+
 		/*  fix select2 error on change selection choice */
 		$ajax.on("change",function(e) {
 			var name = $("#bs-name").html();
